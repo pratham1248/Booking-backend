@@ -25,7 +25,7 @@ jobs:
 
     - name: 🧹 Clean & zip backend
       run: |
-        cd backend
+        cd Backend
         zip -r app.zip . -x "node_modules/*" ".env" ".git/*" ".github/*"
 
     - name: 🚀 Deploy to Elastic Beanstalk
