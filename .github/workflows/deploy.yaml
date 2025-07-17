@@ -1,9 +1,9 @@
-name: 🚀 Deploy Backend to Elastic Beanstalk
+name: 🚀 Deploy Backend to AWS Elastic Beanstalk
 
 on:
   push:
     branches:
-      - main  # Trigger on pushes to 'main' branch
+      - main  # Change if your default branch is different
 
 jobs:
   deploy:
@@ -33,17 +33,7 @@ jobs:
       with:
         aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        region: - name: 🚀 Deploy to Elastic Beanstalk
-  uses: einaregilsson/beanstalk-deploy@v21
-  with:
-    aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-    aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-    region: us-east-1  # ✅ You can hardcode or use: ${{ secrets.AWS_REGION }}
-    application_name: BookingShowBackend
-    environment_name: BookingShowBackend-env
-    version_label: "v-${{ github.run_number }}"
-    deployment_package: backend/app.zip
-
+        region: us-east-1  # ✅ Either hardcoded or use: ${{ secrets.AWS_REGION }}
         application_name: BookingShowBackend
         environment_name: BookingShowBackend-env
         version_label: "v-${{ github.run_number }}"
